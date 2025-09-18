@@ -3,7 +3,7 @@ import 'package:portfolio/theme/theme.dart';
 
 class CustomButton extends StatelessWidget {
   final String label;
-  final VoidCallback onTap;
+  final dynamic onTap;
   const CustomButton({super.key, required this.label, required this.onTap});
 
   @override

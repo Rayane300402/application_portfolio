@@ -1,3 +1,5 @@
+[//]: # (TODO: UPDATE TO SHOW DESIGN AND PROCESS)
+
 # portfolio
 
 A new Flutter project.

@@ -14,17 +14,34 @@ class IntroductionPage extends StatefulWidget {
 
 class _IntroductionPageState extends State<IntroductionPage> {
 
-  void _launchEmail() async {
-    final Uri emailLaunchUri = Uri(
-      scheme: 'mailto',
-      path: 'rayanenaboulsibusiness@gmail.com',
-      query: Uri.encodeFull('subject=Portfolio Contact&body=Hello Rayane,'),
+  Future<void> launchEmail(BuildContext context) async {
+    final Uri emailUri = Uri.parse(
+      'mailto:rayanenaboulsibusiness@gmail.com'
+          '?subject=${Uri.encodeComponent('Portfolio Contact')}'
+          '&body=${Uri.encodeComponent('Hello Rayane,')}',
     );
-    if(await canLaunchUrl(emailLaunchUri)){
-      await launchUrl(emailLaunchUri);
-    }else {
-      debugPrint('Could not launch email client');
+
+
+    try {
+      final launched = await launchUrl(
+        emailUri,
+        mode: LaunchMode.externalApplication,
+      );
+
+      if (!launched) {
+        _showError(context);
+      }
+    } catch (e) {
+      _showError(context);
     }
+  }
+
+  void _showError(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Could not open email app.'),
+      ),
+    );
   }
 
   @override
@@ -109,7 +126,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                         ),),
                         const SizedBox(width: 30,),
 
-                        CustomButton(label: 'Contact Me!', onTap:_launchEmail)
+                        CustomButton(label: 'Contact Me!', onTap: () => launchEmail(context))
 
                       ],
                     )
