@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/components/customButton.dart';
+import 'package:portfolio/components/customCard.dart';
+import 'package:portfolio/components/cvDialog.dart';
 import 'package:portfolio/theme/theme.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../blobs/bottomHueBlob.dart';
+import '../sheets/getToKnowMe.dart';
+import '../sheets/projects.dart';
 
 class IntroductionPage extends StatefulWidget {
   const IntroductionPage({super.key});
@@ -12,7 +16,44 @@ class IntroductionPage extends StatefulWidget {
   State<IntroductionPage> createState() => _IntroductionPageState();
 }
 
-class _IntroductionPageState extends State<IntroductionPage> {
+class _IntroductionPageState extends State<IntroductionPage> with SingleTickerProviderStateMixin{
+  late AnimationController _controller;
+  late Animation<Offset> _card1Offset;
+  late Animation<Offset> _card2Offset;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 900),
+    );
+
+    _card1Offset = Tween<Offset>(
+      begin: const Offset(1.5, 0),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(
+      parent: _controller,
+      curve: const Interval(0.0, 0.6, curve: Curves.easeOut),
+    ));
+
+    _card2Offset = Tween<Offset>(
+      begin: const Offset(1.5, 0),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(
+      parent: _controller,
+      curve: const Interval(0.3, 1.0, curve: Curves.easeOut),
+    ));
+
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   Future<void> launchEmail(BuildContext context) async {
     final Uri emailUri = Uri.parse(
@@ -118,18 +159,61 @@ class _IntroductionPageState extends State<IntroductionPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text('Download CV',
-                        style: textTheme.displayLarge!.copyWith(
-                          fontSize: 20,
-                          color: AppTheme.primaryGreen,
-                          fontWeight: FontWeight.w700
-                        ),),
+                        GestureDetector(
+                          onTap: () => showCVDialog(context),
+                          child: Text('Download CV',
+                          style: textTheme.displayLarge!.copyWith(
+                            fontSize: 20,
+                            color: AppTheme.primaryGreen,
+                            fontWeight: FontWeight.w700
+                          ),),
+                        ),
                         const SizedBox(width: 30,),
 
                         CustomButton(label: 'Contact Me!', onTap: () => launchEmail(context))
 
                       ],
-                    )
+                    ),
+
+                    const SizedBox(height: 50,),
+
+                    // cards here 'assets/images/User_Card_ID.svg'
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SlideTransition(
+                          position: _card1Offset,
+                          child: CustomCard(label: 'Get\nto Know Me', imgPath: 'assets/images/User_Card_ID.svg',
+                              onTap: () {
+                                showModalBottomSheet(
+                                  context: context,
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  builder: (_) => const KnowMeSheet(),
+                                );
+                              },
+                              color: AppTheme.primaryGreen72),
+                        ),
+
+                        const SizedBox(width: 30,),
+
+                        SlideTransition(
+                          position: _card2Offset,
+                          child: CustomCard(label: 'Check out\nmy projects', imgPath: 'assets/images/Mobile_Button.svg',   onTap: () {
+                            showModalBottomSheet(
+                              context: context,
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              builder: (_) => const ProjectsSheet(),
+                            );
+                          }, color: AppTheme.accentOrange74),
+                        ),
+
+                      ],
+                    ),
+
+
                   ],
                 ),
               )
