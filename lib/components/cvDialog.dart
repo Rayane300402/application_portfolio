@@ -2,7 +2,6 @@ import 'package:file_saver/file_saver.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/theme/theme.dart';
 import 'package:flutter/services.dart';
-import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 
 Future<void> showCVDialog(BuildContext context) async {
@@ -45,7 +44,6 @@ class _DownloadButton extends StatelessWidget {
     required this.label,
     required this.assetPath,
   });
-
   Future<void> _savePdfToDevice(BuildContext context) async {
     try {
       final bytes = await rootBundle.load(assetPath);
