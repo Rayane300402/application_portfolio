@@ -15,10 +15,15 @@ class KnowMeSheet extends StatelessWidget {
           topRight: Radius.circular(40),
         ),
       ),
-      child: Center(
-        child: Text(
-          'Know Me Content Here',
-          style: Theme.of(context).textTheme.displayLarge,
+      child:Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            children: [
+
+            ],
+          ),
         ),
       ),
     );
