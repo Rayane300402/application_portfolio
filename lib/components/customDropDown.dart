@@ -1,91 +1,72 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
+import '../models/DropNode.dart';
 import '../theme/theme.dart';
 
-class CustomDropDown extends StatefulWidget {
-  final String title;
-  final List<Widget> children;
-  final Color bgColor;
-  final Color txtColor;
+class CustomDropdown extends StatefulWidget {
+  final String value;
+  final VoidCallback onTap;            // open overlay handled outside
+  final bool isOpen;
 
-  const CustomDropDown({super.key, required this.title, required this.children, required this.bgColor, required this.txtColor});
+  const CustomDropdown({
+    super.key,
+    required this.value,
+    required this.onTap,
+    required this.isOpen,
+  });
 
   @override
-  State<CustomDropDown> createState() => _CustomDropDownState();
+  State<CustomDropdown> createState() => _CustomDropdownState();
 }
 
-class _CustomDropDownState extends State<CustomDropDown> with SingleTickerProviderStateMixin{
-  bool _isExpanded = false;
-  late AnimationController _controller;
-  late Animation<double> _arrowAnimation;
+class _CustomDropdownState extends State<CustomDropdown> with SingleTickerProviderStateMixin {
+  late final AnimationController _ctrl = AnimationController(vsync: this, duration: const Duration(milliseconds: 200));
+  late final Animation<double> _turn = Tween<double>(begin: 0, end: .5)
+      .animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeOut));
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 300)
-    );
-
-    _arrowAnimation = Tween<double>(begin:0.0, end: 0.5).animate(_controller);
-
+  void didUpdateWidget(covariant CustomDropdown oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    widget.isOpen ? _ctrl.forward() : _ctrl.reverse();
   }
 
-  void _toggleExpand() {
-    setState(() {
-      _isExpanded = !_isExpanded;
-      if(_isExpanded){
-        _controller.forward();
-      }else {
-        _controller.reverse();
-      }
-    });
-  }
+  @override
+  void dispose() { _ctrl.dispose(); super.dispose(); }
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return AnimatedContainer(
-        duration: const Duration(milliseconds: 300),
+      width: MediaQuery.of(context).size.width - 32,
+      duration: const Duration(milliseconds: 180),
+      curve: Curves.easeOut,
       decoration: BoxDecoration(
-        color: widget.bgColor,
-        borderRadius: BorderRadius.circular(12),
+        color: Colors.white,                       // white pill like your design
+        borderRadius: BorderRadius.circular(24),
       ),
-      margin: const EdgeInsets.symmetric(vertical: 6),
-      child: Column(
-        children: [
-          ListTile(
-            title: Text(
-              widget.title,
-              style: textTheme.displayMedium!.copyWith(
-                  fontSize: 18,
-                  color: widget.txtColor,
-              ),
-            ),
-            trailing: RotationTransition(
-                turns: _arrowAnimation,
-              child:  IgnorePointer(    // keeps splash taps clean
-                child: SvgPicture.asset(
-                  'assets/images/Caret_Down_MD.svg',
-                  colorFilter: ColorFilter.mode(
-                    AppTheme.textWhite,
-                    BlendMode.srcATop,
-                  ),
+      child: InkWell(
+        onTap: widget.onTap,
+        borderRadius: BorderRadius.circular(24),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                widget.value,
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  color: AppTheme.primaryGreen,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
-            ),
-            onTap: _toggleExpand,
+              const SizedBox(width: 10),
+              RotationTransition(
+                turns: _turn,
+                child: const Icon(Icons.expand_more, color: AppTheme.primaryGreen),
+              ),
+            ],
           ),
-          AnimatedCrossFade(
-            duration: const Duration(milliseconds: 300),
-            crossFadeState: _isExpanded ? CrossFadeState.showFirst : CrossFadeState.showSecond,
-            firstChild: Column(children: widget.children),
-            secondChild: const SizedBox.shrink(),
-          )
-        ],
+        ),
       ),
     );
   }
