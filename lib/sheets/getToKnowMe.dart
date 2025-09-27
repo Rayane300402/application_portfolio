@@ -111,10 +111,6 @@ class _KnowMeSheetState extends State<KnowMeSheet> {
                 child: Container(
                   key: ValueKey(_selected),
                   padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: AppTheme.primaryGreen,
-                    borderRadius: BorderRadius.circular(24)
-                  ),
                   child: _bodyFor(_selected),
                 ),
 

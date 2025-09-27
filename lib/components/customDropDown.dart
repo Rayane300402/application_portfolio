@@ -56,7 +56,7 @@ class _CustomDropdownState extends State<CustomDropdown> with SingleTickerProvid
                 widget.value,
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                   color: AppTheme.primaryGreen,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
               const SizedBox(width: 10),
