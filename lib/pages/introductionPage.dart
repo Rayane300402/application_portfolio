@@ -90,7 +90,7 @@ class _IntroductionPageState extends State<IntroductionPage> with SingleTickerPr
     final size = MediaQuery.of(context).size;
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
-      body: SafeArea(child: Stack(
+      body: Stack(
         children: [
           Positioned(
             top: -350,
@@ -220,7 +220,7 @@ class _IntroductionPageState extends State<IntroductionPage> with SingleTickerPr
           )
 
         ],
-      ))
+      )
     );
   }
 }

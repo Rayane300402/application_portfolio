@@ -36,6 +36,7 @@ class _CustomDropdownState extends State<CustomDropdown> with SingleTickerProvid
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
+      margin: const EdgeInsets.all(16),
       width: MediaQuery.of(context).size.width - 32,
       duration: const Duration(milliseconds: 180),
       curve: Curves.easeOut,

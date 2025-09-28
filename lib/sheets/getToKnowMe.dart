@@ -84,39 +84,36 @@ class _KnowMeSheetState extends State<KnowMeSheet> {
           topRight: Radius.circular(40),
         ),
       ),
-      child:Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CompositedTransformTarget(
-                link: _link,
-                child: CustomDropdown(
-                  value: _selected,
-                  isOpen: _open,
-                  onTap: _open ? _closeMenu : _openMenu,
-                ),
+      child:SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CompositedTransformTarget(
+              link: _link,
+              child: CustomDropdown(
+                value: _selected,
+                isOpen: _open,
+                onTap: _open ? _closeMenu : _openMenu,
+              ),
+            ),
+
+            const SizedBox(height: 16,),
+
+            AnimatedSwitcher(
+              duration: const Duration(milliseconds: 220),
+              switchInCurve: Curves.easeOut,
+              switchOutCurve: Curves.easeIn,
+              transitionBuilder: (c, a) => FadeTransition(opacity: a, child: c),
+
+              child: Container(
+                key: ValueKey(_selected),
+                padding: const EdgeInsets.all(16),
+                child: _bodyFor(_selected),
               ),
 
-              const SizedBox(height: 16,),
-
-              AnimatedSwitcher(
-                duration: const Duration(milliseconds: 220),
-                switchInCurve: Curves.easeOut,
-                switchOutCurve: Curves.easeIn,
-                transitionBuilder: (c, a) => FadeTransition(opacity: a, child: c),
-
-                child: Container(
-                  key: ValueKey(_selected),
-                  padding: const EdgeInsets.all(16),
-                  child: _bodyFor(_selected),
-                ),
-
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
