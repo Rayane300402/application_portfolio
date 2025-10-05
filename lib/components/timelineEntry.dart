@@ -9,6 +9,9 @@ class TimelineEntry extends StatelessWidget {
   final String dates;
   final String role;
   final String body;
+
+  final List<String>? metaLines;
+
   final EdgeInsets padding;
   final double gap;
 
@@ -19,6 +22,7 @@ class TimelineEntry extends StatelessWidget {
     required this.dates,
     required this.role,
     required this.body,
+    this.metaLines,
     this.padding = const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
     this.gap = 28,
   });
@@ -76,6 +80,19 @@ class TimelineEntry extends StatelessWidget {
                     color: AppTheme.primaryGreen,
                   ),
                 ),
+                if (metaLines != null && metaLines!.isNotEmpty) ... [
+                  const SizedBox(height: 6,),
+                  for(final line in metaLines!)
+                    Text(
+                      line,
+                      textAlign: textAlign,
+                      style: t.bodyMedium!.copyWith(
+                        color: AppTheme.primaryGreen,
+                      ),
+                    )
+                ],
+
+
                 const SizedBox(height: 8),
                 Text(
                   body,
