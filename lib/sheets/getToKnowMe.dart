@@ -84,8 +84,8 @@ class _KnowMeSheetState extends State<KnowMeSheet> {
           topRight: Radius.circular(40),
         ),
       ),
-      child:SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
+      child:Padding(
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -100,18 +100,20 @@ class _KnowMeSheetState extends State<KnowMeSheet> {
 
             const SizedBox(height: 16,),
 
-            AnimatedSwitcher(
-              duration: const Duration(milliseconds: 220),
-              switchInCurve: Curves.easeOut,
-              switchOutCurve: Curves.easeIn,
-              transitionBuilder: (c, a) => FadeTransition(opacity: a, child: c),
+            Expanded(
+              child: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 220),
+                switchInCurve: Curves.easeOut,
+                switchOutCurve: Curves.easeIn,
+                transitionBuilder: (c, a) => FadeTransition(opacity: a, child: c),
 
-              child: Container(
-                key: ValueKey(_selected),
-                padding: const EdgeInsets.all(16),
-                child: _bodyFor(_selected),
+                child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                    key: ValueKey(_selected),
+                    child: _bodyFor(_selected),
+                ),
+
               ),
-
             ),
           ],
         ),
