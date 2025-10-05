@@ -3,6 +3,7 @@ import 'package:portfolio/components/customDropDown.dart';
 import 'package:portfolio/theme/theme.dart';
 
 import '../components/dropdownPanel.dart';
+import '../features/academicsSection.dart';
 import '../features/experienceSection.dart';
 import '../features/welcomeSection.dart';
 import '../models/DropNode.dart';
@@ -66,7 +67,7 @@ class _KnowMeSheetState extends State<KnowMeSheet> {
     switch (key) {
       case 'Welcome :)':   return const WelcomeSection();
       case 'Experience':   return const ExperienceSection();
-    // case 'Academics':  return const AcademicsSection();
+      case 'Academics':  return const AcademicsSection();
     // case 'Certificates': return const CertificatesSection();
     // case 'Skills & Hobbies': return const SkillsSection();
       default: return Text('$key – coming soon', style: Theme.of(context).textTheme.bodyMedium);

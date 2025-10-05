@@ -103,7 +103,6 @@ class ExperienceSection extends StatelessWidget {
           ),
         ),
 
-
         // EXCITEMENT #3 (between 1 and 2)
         Positioned(
           top: h * 0.55,        // <-- tune
