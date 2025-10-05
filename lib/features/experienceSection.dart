@@ -11,6 +11,7 @@ class ExperienceSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final accent = AppTheme.accentOrange74;
     final w = MediaQuery.of(context).size.width;
+    final h = MediaQuery.of(context).size.height;
 
     return Stack(
       clipBehavior: Clip.none,
@@ -51,64 +52,69 @@ class ExperienceSection extends StatelessWidget {
         ),
 
         // ===== Inter-entry accents (2 arrows + 3 excitements) =====
-        // You’ll tweak these `top/left/right` numbers by eye to match your layout.
-        // Using currentColor so tint is controlled here.
-        // ARROW near first entry (to the right)
-        // Positioned(
-        //   top: 0,         // <-- tune
-        //   right: 0,
-        //   child: SvgPicture.asset(
-        //     'assets/images/arrowRight.svg',
-        //     width: 36,
-        //     theme: SvgTheme(currentColor: accent),
-        //   ),
-        // ),
-
-        // ARROW near second entry (to the left)
-        // Positioned(
-        //   top: 0,        // <-- tune
-        //   left: 0,
-        //   child: SvgPicture.asset(
-        //     'assets/images/arrowLeft.svg',
-        //     width: 36,
-        //     theme: SvgTheme(currentColor: accent),
-        //   ),
-        // ),
-
-        // EXCITEMENT #1 (between 1 and 2)
+        // left arrow one
         Positioned(
-          top: 0,        // <-- tune
-          right: - 10,
+          top: h * 0.35,
+          left: 0,
           child: SvgPicture.asset(
-            'assets/images/Excitement.svg',
+            'assets/images/arrowRight.svg',
             width: 100,
             theme: SvgTheme(currentColor: accent),
           ),
         ),
 
-        // EXCITEMENT #2 (behind 2)
+        // right arrow two
         Positioned(
-          bottom: 0,
-          right: -20,
+          top: h * 0.63,         // <-- tune
+          right: -w * 0.2,
+          child: Transform(
+            transform: Matrix4.identity()..scale(-1.0,1.0,1.0),
+            child: SvgPicture.asset(
+              'assets/images/arrowRight.svg',
+              width: 100,
+              theme: SvgTheme(currentColor: accent),
+            ),
+          ),
+        ),
+
+
+        // EXCITEMENT #1 (start)
+        Positioned(
+          top: 0,        // <-- tune
+          right: 5,
+          child: SvgPicture.asset(
+            'assets/images/Excitement.svg',
+            width: 90,
+            theme: SvgTheme(currentColor: accent),
+          ),
+        ),
+
+        // EXCITEMENT #2 (at bottom)
+        Positioned(
+          bottom: 10,
+          right: 0,
           child: Transform.rotate(
             angle: 45 * 3.1415926535 / 180, // 45 degrees in radians
             child: SvgPicture.asset(
               'assets/images/Excitement.svg',
-              width: 120,
+              width: 90,
               theme: SvgTheme(currentColor: AppTheme.accentOrange74),
             ),
           ),
         ),
 
 
-        // EXCITEMENT #3 (between 2 and 3)
+        // EXCITEMENT #3 (between 1 and 2)
         Positioned(
-          top: 0,        // <-- tune
-          right: w * 0.1,
-          child: SvgPicture.asset(
-            'assets/images/Excitement.svg',
-            width: 100,
-            theme: SvgTheme(currentColor: accent),
+          top: h * 0.55,        // <-- tune
+          left: 0,
+          child: Transform.rotate(
+            angle: 143 * 3.1415926535 / 180,
+            child: SvgPicture.asset(
+              'assets/images/Excitement.svg',
+              width: 90,
+              theme: SvgTheme(currentColor: accent),
+            ),
           ),
         ),
       ],
