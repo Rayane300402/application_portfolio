@@ -6,6 +6,7 @@ import '../components/dropdownPanel.dart';
 import '../features/academicsSection.dart';
 import '../features/certificatesSections.dart';
 import '../features/experienceSection.dart';
+import '../features/skillsSection.dart';
 import '../features/welcomeSection.dart';
 import '../models/DropNode.dart';
 
@@ -70,7 +71,7 @@ class _KnowMeSheetState extends State<KnowMeSheet> {
       case 'Experience':   return const ExperienceSection();
       case 'Academics':  return const AcademicsSection();
       case 'Certificates': return const CertificatesSection();
-    // case 'Skills & Hobbies': return const SkillsSection();
+      case 'Skills & Hobbies': return const SkillsSection();
       default: return Text('$key – coming soon', style: Theme.of(context).textTheme.bodyMedium);
     }
   }
@@ -101,6 +102,22 @@ class _KnowMeSheetState extends State<KnowMeSheet> {
             ),
 
             const SizedBox(height: 16,),
+            //
+            // Expanded(
+            //   child: AnimatedSwitcher(
+            //     duration: const Duration(milliseconds: 220),
+            //     switchInCurve: Curves.easeOut,
+            //     switchOutCurve: Curves.easeIn,
+            //     transitionBuilder: (c, a) => FadeTransition(opacity: a, child: c),
+            //
+            //     child: SingleChildScrollView(
+            //       physics: const BouncingScrollPhysics(),
+            //         key: ValueKey(_selected),
+            //         child: _bodyFor(_selected),
+            //     ),
+            //
+            //   ),
+            // ),
 
             Expanded(
               child: AnimatedSwitcher(
@@ -109,14 +126,25 @@ class _KnowMeSheetState extends State<KnowMeSheet> {
                 switchOutCurve: Curves.easeIn,
                 transitionBuilder: (c, a) => FadeTransition(opacity: a, child: c),
 
-                child: SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                    key: ValueKey(_selected),
-                    child: _bodyFor(_selected),
-                ),
+                // ⬇⬇ THIS is the important change
+                layoutBuilder: (Widget? currentChild, List<Widget> previousChildren) {
+                  return Stack(
+                    alignment: Alignment.topLeft, // instead of center
+                    children: <Widget>[
+                      ...previousChildren,
+                      if (currentChild != null) currentChild,
+                    ],
+                  );
+                },
 
+                child: SingleChildScrollView(
+                  key: ValueKey(_selected),
+                  physics: const BouncingScrollPhysics(),
+                  child: _bodyFor(_selected),
+                ),
               ),
-            ),
+            )
+
           ],
         ),
       ),
