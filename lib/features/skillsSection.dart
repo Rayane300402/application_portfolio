@@ -11,7 +11,7 @@ class SkillsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final t = Theme.of(context).textTheme;
-    final accent = AppTheme.accentOrange74;
+    final accent = AppTheme.accentOrange2;
     final w = MediaQuery.of(context).size.width;
     final h = MediaQuery.of(context).size.height;
     return Stack(

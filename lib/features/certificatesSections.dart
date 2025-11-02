@@ -14,7 +14,7 @@ class CertificatesSection extends StatefulWidget {
 class _CertificatesSectionState extends State<CertificatesSection> {
   @override
   Widget build(BuildContext context) {
-    final accent = AppTheme.accentOrange74;
+    final accent = AppTheme.accentOrange2;
     final w = MediaQuery.of(context).size.width;
     final h = MediaQuery.of(context).size.height;
     return Stack(

@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/components/projectButton.dart';
 import 'package:portfolio/theme/theme.dart';
 
 enum EntrySide { left, right }
 
 class TimelineEntry extends StatelessWidget {
   final EntrySide side;
-  final String company;
-  final String dates;
-  final String role;
+  final String company; // company or project name
+  final String dates; // date or responsibility
+  final String role; // role or company
   final String body;
 
   final List<String>? metaLines;
-
+  final List<ProjectActionButtonData>? actions;
   final EdgeInsets padding;
   final double gap;
+  final Color customColor;
 
   const TimelineEntry({
     super.key,
@@ -23,8 +25,10 @@ class TimelineEntry extends StatelessWidget {
     required this.role,
     required this.body,
     this.metaLines,
+    this.actions,
     this.padding = const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
     this.gap = 28,
+    this.customColor = AppTheme.primaryGreen
   });
 
   @override
@@ -36,6 +40,63 @@ class TimelineEntry extends StatelessWidget {
         : CrossAxisAlignment.end;
 
     final textAlign = side == EntrySide.left ? TextAlign.left : TextAlign.right;
+
+    Widget _buildActionsRows() {
+      if (actions == null || actions!.isEmpty) {
+        return const SizedBox.shrink();
+      }
+
+      // buttons should align OPPOSITE the text:
+      // if text is left -> buttons go right,
+      // if text is right -> buttons go left.
+      final rowAlignment = side == EntrySide.left
+          ? MainAxisAlignment.end
+          : MainAxisAlignment.start;
+
+      final outerAlign = side == EntrySide.left
+          ? Alignment.centerRight
+          : Alignment.centerLeft;
+
+      // Build rows of at most 2 buttons each
+      final List<Widget> rowWidgets = [];
+      for (var i = 0; i < actions!.length; i += 2) {
+        final first  = actions![i];
+        final second = (i + 1 < actions!.length) ? actions![i + 1] : null;
+
+        rowWidgets.add(
+          Row(
+            mainAxisSize: MainAxisSize.min,      // <-- prevents forcing full width
+            mainAxisAlignment: rowAlignment,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ProjectActionButton(data: first),
+              if (second != null) ...[
+                const SizedBox(width: 12),
+                ProjectActionButton(data: second),
+              ],
+            ],
+          ),
+        );
+
+        // add vertical gap between rows, but NOT after the last one
+        if (i + 2 < actions!.length) {
+          rowWidgets.add(const SizedBox(height: 10));
+        }
+      }
+
+      return Padding(
+        padding: const EdgeInsets.only(top: 16),
+        child: Align(
+          alignment: outerAlign,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: rowWidgets,
+          ),
+        ),
+      );
+    }
+
 
     return Padding(
       padding: EdgeInsets.only(
@@ -60,7 +121,7 @@ class TimelineEntry extends StatelessWidget {
                   style: t.displayLarge!.copyWith(
                     fontSize: 18,
                     letterSpacing: 0.2,
-                    color: AppTheme.primaryGreen,
+                    color: customColor,
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -77,7 +138,7 @@ class TimelineEntry extends StatelessWidget {
                   textAlign: textAlign,
                   style: t.displayMedium!.copyWith(
                     fontSize: 18,
-                    color: AppTheme.primaryGreen,
+                    color: customColor,
                   ),
                 ),
                 if (metaLines != null && metaLines!.isNotEmpty) ... [
@@ -87,7 +148,7 @@ class TimelineEntry extends StatelessWidget {
                       line,
                       textAlign: textAlign,
                       style: t.bodyMedium!.copyWith(
-                        color: AppTheme.primaryGreen,
+                        color: customColor,
                       ),
                     )
                 ],
@@ -99,6 +160,9 @@ class TimelineEntry extends StatelessWidget {
                   textAlign: textAlign,
                   style: t.bodyMedium!.copyWith(height: 1.55),
                 ),
+
+                // buttons under body (optional)
+                _buildActionsRows(),
               ],
             ),
           ),

@@ -9,7 +9,7 @@ class ExperienceSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final accent = AppTheme.accentOrange74;
+    final accent = AppTheme.accentOrange2;
     final w = MediaQuery.of(context).size.width;
     final h = MediaQuery.of(context).size.height;
 
@@ -98,7 +98,7 @@ class ExperienceSection extends StatelessWidget {
             child: SvgPicture.asset(
               'assets/images/Excitement.svg',
               width: 90,
-              theme: SvgTheme(currentColor: AppTheme.accentOrange74),
+              theme: SvgTheme(currentColor: accent),
             ),
           ),
         ),

@@ -7,6 +7,8 @@ class AppTheme{
   static const Color primaryGreen72 = Color(0xB8334B35); // 72% opacity
   static const Color accentOrange74 = Color(0xBD60351A);   // 74% opacity
   static const Color textWhite = Color(0xFFFFFFFF);
+  static const Color primaryGreen2 = Color(0xFF2C3C2D); // 72% opacity
+  static const Color accentOrange2 = Color(0xFFA46139);
 
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
