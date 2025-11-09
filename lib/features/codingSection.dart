@@ -144,13 +144,50 @@ class CodingSection extends StatelessWidget {
                 ),
               ],
             ),
+            const SizedBox(height: 50,),
+            TimelineEntry(
+              side: EntrySide.left,
+              company: "VirtuEscape",
+              dates: "September 2022 – June 2023",
+              role: "Senior Project @ BAU",
+              customColor: AppTheme.accentOrange,
+              body:
+              "Created a multi-page site using HTML, CSS, and vanilla JS to simulate travel experiences during the pandemic.\n"
+                  "• Built for immersive user interaction, destination storytelling, and visual atmosphere.\n"
+                  "• Focused on clarity of layout, readable content, and engagement without heavy frameworks.",
+              actions: [
+                ProjectActionButtonData(
+                  iconAsset: 'assets/images/github.png',
+                  label1: 'Checkout',
+                  label2: 'Github Repo',
+                  onTap: () {
+                    // launch store link
+                  },
+                ),
+                ProjectActionButtonData(
+                  iconAsset: 'assets/images/ux.png',
+                  label1: 'Checkout',
+                  label2: 'Website',
+                  onTap: () {
+                    // launch app store link
+                  },
+                ),
+                ProjectActionButtonData(
+                  iconAsset: 'assets/images/figma.png',
+                  label1: 'Checkout',
+                  label2: 'Design',
+                  onTap: () {
+                    // launch app store link
+                  },
+                ),
+              ],
+            ),
             const SizedBox(height: 70,),
 
           ],
         ),
 
         // ===== Inter-entry accents =====
-        // left arrow one
         Positioned(
           top: h * 0.5,
           left: 30,
@@ -161,7 +198,6 @@ class CodingSection extends StatelessWidget {
           ),
         ),
 
-        // right arrow two
         Positioned(
           top: h ,         // <-- tune
           right: -w * 0.2,
@@ -182,6 +218,19 @@ class CodingSection extends StatelessWidget {
             'assets/images/arrowRight.svg',
             width: 100,
             theme: SvgTheme(currentColor: accent),
+          ),
+        ),
+
+        Positioned(
+          top: h * 2.1,         // <-- tune
+          right: -w * 0.2,
+          child: Transform(
+            transform: Matrix4.identity()..scale(-1.0,1.0,1.0),
+            child: SvgPicture.asset(
+              'assets/images/arrowRight.svg',
+              width: 100,
+              theme: SvgTheme(currentColor: accent),
+            ),
           ),
         ),
 
@@ -222,11 +271,11 @@ class CodingSection extends StatelessWidget {
         ),
 
         Positioned(
-          bottom: -10,        // <-- tune
+          bottom: 0,        // <-- tune
           left: 20,
           child: SvgPicture.asset(
             'assets/images/monitor.svg',
-            width: 120,
+            width: 140,
             theme: SvgTheme(currentColor: accent),
           ),
         ),
