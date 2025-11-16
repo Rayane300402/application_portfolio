@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../components/projectButton.dart';
 import '../components/timelineEntry.dart';
@@ -35,19 +36,34 @@ class CodingSection extends StatelessWidget {
                   iconAsset: 'assets/images/playstore.png',
                   label1: 'Get it on',
                   label2: 'Google Play',
-                  onTap: () {
-                    // launch store link
+                  onTap: () async {
+                    final uri = Uri.parse('https://play.google.com/store/apps/details?id=com.aiy.laced&pli=1'); // your real link
+                    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+                      throw Exception('Could not launch $uri');
+                    }
                   },
                 ),
                 ProjectActionButtonData(
                   iconAsset: 'assets/images/apple.png',
                   label1: 'Get it on',
                   label2: 'App Store',
+                  onTap: () async {
+                    final uri = Uri.parse('apps.apple.com/us/app/laced-snkr-drops/id6741904336'); // your real link
+                    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+                      throw Exception('Could not launch $uri');
+                    }
+                  },
+                ),
+                ProjectActionButtonData(
+                  iconAsset: 'assets/images/testing.png',
+                  label1: 'Checkout',
+                  label2: 'Design Process',
                   onTap: () {
                     // launch app store link
                   },
                 ),
               ],
+
             ),
             const SizedBox(height: 50,),
             TimelineEntry(
@@ -66,16 +82,22 @@ class CodingSection extends StatelessWidget {
                   iconAsset: 'assets/images/github.png',
                   label1: 'Checkout',
                   label2: 'Github Repo',
-                  onTap: () {
-                    // launch store link
+                  onTap: () async {
+                    final uri = Uri.parse('https://github.com/Rayane300402/share-care-angular'); // your real link
+                    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+                      throw Exception('Could not launch $uri');
+                    }
                   },
                 ),
                 ProjectActionButtonData(
                   iconAsset: 'assets/images/ux.png',
                   label1: 'Checkout',
                   label2: 'Website',
-                  onTap: () {
-                    // launch app store link
+                  onTap: () async {
+                    final uri = Uri.parse('https://sharecareang.netlify.app/'); // your real link
+                    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+                      throw Exception('Could not launch $uri');
+                    }
                   },
                 ),
                 ProjectActionButtonData(
@@ -106,8 +128,19 @@ class CodingSection extends StatelessWidget {
                   iconAsset: 'assets/images/tsb.png',
                   label1: 'Checkout',
                   label2: 'Website',
+                  onTap: () async {
+                    final uri = Uri.parse('https://www.theshitbot.com/'); // your real link
+                    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+                      throw Exception('Could not launch $uri');
+                    }
+                  },
+                ),
+                ProjectActionButtonData(
+                  iconAsset: 'assets/images/testing.png',
+                  label1: 'Checkout',
+                  label2: 'Design Process',
                   onTap: () {
-                    // launch store link
+                    // launch app store link
                   },
                 ),
               ],
@@ -130,8 +163,11 @@ class CodingSection extends StatelessWidget {
                   iconAsset: 'assets/images/github.png',
                   label1: 'Checkout',
                   label2: 'Github Repo',
-                  onTap: () {
-                    // launch store link
+                  onTap: () async {
+                    final uri = Uri.parse('https://github.com/Rayane300402/OrderlyFlow'); // your real link
+                    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+                      throw Exception('Could not launch $uri');
+                    }
                   },
                 ),
                 ProjectActionButtonData(
@@ -160,16 +196,22 @@ class CodingSection extends StatelessWidget {
                   iconAsset: 'assets/images/github.png',
                   label1: 'Checkout',
                   label2: 'Github Repo',
-                  onTap: () {
-                    // launch store link
+                  onTap: () async {
+                    final uri = Uri.parse('https://github.com/Rayane300402/VirtueEscape2'); // your real link
+                    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+                      throw Exception('Could not launch $uri');
+                    }
                   },
                 ),
                 ProjectActionButtonData(
                   iconAsset: 'assets/images/ux.png',
                   label1: 'Checkout',
                   label2: 'Website',
-                  onTap: () {
-                    // launch app store link
+                  onTap: () async {
+                    final uri = Uri.parse('https://virtue-escape.netlify.app/'); // your real link
+                    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+                      throw Exception('Could not launch $uri');
+                    }
                   },
                 ),
                 ProjectActionButtonData(
