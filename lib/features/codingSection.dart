@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../components/lacedProcessSheet.dart';
 import '../components/projectButton.dart';
 import '../components/timelineEntry.dart';
 import '../theme/theme.dart';
@@ -57,10 +58,8 @@ class CodingSection extends StatelessWidget {
                 ProjectActionButtonData(
                   iconAsset: 'assets/images/testing.png',
                   label1: 'Checkout',
-                  label2: 'Design Process',
-                  onTap: () {
-                    // launch app store link
-                  },
+                  label2: 'Process',
+                  onTap: () => showLacedProcessSheet(context),
                 ),
               ],
 
@@ -254,7 +253,7 @@ class CodingSection extends StatelessWidget {
         ),
 
         Positioned(
-          top: h * 1.5,
+          top: h * 1.6,
           left: 30,
           child: SvgPicture.asset(
             'assets/images/arrowRight.svg',
@@ -264,7 +263,7 @@ class CodingSection extends StatelessWidget {
         ),
 
         Positioned(
-          top: h * 2.1,         // <-- tune
+          top: h * 2.16,         // <-- tune
           right: -w * 0.2,
           child: Transform(
             transform: Matrix4.identity()..scale(-1.0,1.0,1.0),

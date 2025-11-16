@@ -65,7 +65,7 @@ class TimelineEntry extends StatelessWidget {
 
         rowWidgets.add(
           Row(
-            mainAxisSize: MainAxisSize.min,      // <-- prevents forcing full width
+            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: rowAlignment,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

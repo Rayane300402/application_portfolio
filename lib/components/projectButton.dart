@@ -30,8 +30,8 @@ class ProjectActionButton extends StatelessWidget {
       onTap: data.onTap,
       child: Container(
         constraints: const BoxConstraints(
-          minWidth: 145,
-          maxWidth: 150, // ⬅️ give it breathing room, not fixed
+          minWidth: 150,
+          maxWidth: 160, // ⬅️ give it breathing room, not fixed
         ),
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
         decoration: BoxDecoration(
