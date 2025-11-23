@@ -99,14 +99,6 @@ class CodingSection extends StatelessWidget {
                     }
                   },
                 ),
-                ProjectActionButtonData(
-                  iconAsset: 'assets/images/figma.png',
-                  label1: 'Checkout',
-                  label2: 'Design',
-                  onTap: () {
-                    // launch app store link
-                  },
-                ),
               ],
             ),
             const SizedBox(height: 50,),
@@ -173,8 +165,11 @@ class CodingSection extends StatelessWidget {
                   iconAsset: 'assets/images/figma.png',
                   label1: 'Checkout',
                   label2: 'Design',
-                  onTap: () {
-                    // launch app store link
+                  onTap: () async {
+                    final uri = Uri.parse('https://www.figma.com/design/pZ4mh1ZR5fayCG0SEFY9S3/OrderlyFlow?node-id=0-1&t=saDMrn1g50ioT4at-1'); // your real link
+                    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+                      throw Exception('Could not launch $uri');
+                    }
                   },
                 ),
               ],
@@ -213,14 +208,6 @@ class CodingSection extends StatelessWidget {
                     }
                   },
                 ),
-                ProjectActionButtonData(
-                  iconAsset: 'assets/images/figma.png',
-                  label1: 'Checkout',
-                  label2: 'Design',
-                  onTap: () {
-                    // launch app store link
-                  },
-                ),
               ],
             ),
             const SizedBox(height: 70,),
@@ -240,7 +227,7 @@ class CodingSection extends StatelessWidget {
         ),
 
         Positioned(
-          top: h ,         // <-- tune
+          top: h * 1.05,         // <-- tune
           right: -w * 0.2,
           child: Transform(
             transform: Matrix4.identity()..scale(-1.0,1.0,1.0),
@@ -253,8 +240,8 @@ class CodingSection extends StatelessWidget {
         ),
 
         Positioned(
-          top: h * 1.6,
-          left: 30,
+          top: h * 1.54,
+          left: 0,
           child: SvgPicture.asset(
             'assets/images/arrowRight.svg',
             width: 100,
@@ -263,7 +250,7 @@ class CodingSection extends StatelessWidget {
         ),
 
         Positioned(
-          top: h * 2.16,         // <-- tune
+          top: h * 2.1,         // <-- tune
           right: -w * 0.2,
           child: Transform(
             transform: Matrix4.identity()..scale(-1.0,1.0,1.0),
@@ -276,7 +263,7 @@ class CodingSection extends StatelessWidget {
         ),
 
         Positioned(
-          top: h * 0.5,        // <-- tune
+          top: h * 0.55,        // <-- tune
           left: w * 0.5,
           child: Transform(
             transform: Matrix4.identity()..scale(-1.0,1.0,1.0),
@@ -312,7 +299,7 @@ class CodingSection extends StatelessWidget {
         ),
 
         Positioned(
-          bottom: 0,        // <-- tune
+          bottom: -20,        // <-- tune
           left: 20,
           child: SvgPicture.asset(
             'assets/images/monitor.svg',
