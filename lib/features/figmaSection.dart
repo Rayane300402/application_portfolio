@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../components/projectButton.dart';
 import '../components/timelineEntry.dart';
@@ -31,14 +32,6 @@ class FigmaSection extends StatelessWidget {
                   "• Created both hand-sketched wireframes and high-fidelity prototypes in Figma.\n"
                   "• Designed features including flexible reminder scheduling, pill logs, progress visualization, and motivational consistency stats.",
               actions: [
-                // ProjectActionButtonData(
-                //   iconAsset: 'assets/images/github.png',
-                //   label1: 'Checkout',
-                //   label2: 'Github Repo',
-                //   onTap: () {
-                //     // launch store link
-                //   },
-                // ),
                 ProjectActionButtonData(
                   iconAsset: 'assets/images/figma.png',
                   label1: 'Checkout',
@@ -46,6 +39,14 @@ class FigmaSection extends StatelessWidget {
                   onTap: () {
                     // launch app store link
                   },
+                ),
+                ProjectActionButtonData(
+                    iconAsset: 'assets/images/testing.png',
+                    label1: 'Checkout',
+                    label2: 'Process',
+                    onTap: () {
+
+                    }
                 ),
               ],
             ),
@@ -68,9 +69,20 @@ class FigmaSection extends StatelessWidget {
                   iconAsset: 'assets/images/figma.png',
                   label1: 'Checkout',
                   label2: 'Design',
-                  onTap: () {
-                    // launch app store link
+                  onTap: () async {
+                    final uri = Uri.parse('https://www.figma.com/design/29NXlTWKs1hQkuIfvnFhia/UX-Course?node-id=4-2&t=itVUmwmUpuW1iaF2-1'); // your real link
+                    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+                      throw Exception('Could not launch $uri');
+                    }
                   },
+                ),
+                ProjectActionButtonData(
+                  iconAsset: 'assets/images/testing.png',
+                  label1: 'Checkout',
+                  label2: 'Process',
+                  onTap: () {
+
+                  }
                 ),
               ],
             ),
@@ -87,20 +99,15 @@ class FigmaSection extends StatelessWidget {
                   "• Developed UI layout, component library, and interaction patterns directly in Figma.\n"
                   "• Prioritized clean typography, fast scanning layouts, and visually organized content states.",
               actions: [
-                // ProjectActionButtonData(
-                //   iconAsset: 'assets/images/github.png',
-                //   label1: 'Checkout',
-                //   label2: 'Github Repo',
-                //   onTap: () {
-                //     // launch store link
-                //   },
-                // ),
                 ProjectActionButtonData(
                   iconAsset: 'assets/images/figma.png',
                   label1: 'Checkout',
                   label2: 'Design',
-                  onTap: () {
-                    // launch app store link
+                  onTap: () async{
+                    final uri = Uri.parse('https://www.figma.com/design/GRnAon4yUXMNI1c2je3XKT/SeriesScribe?node-id=0-1&t=5YSBcOwTViD3u2EQ-1'); // your real link
+                    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+                    throw Exception('Could not launch $uri');
+                    }
                   },
                 ),
               ],
@@ -110,30 +117,35 @@ class FigmaSection extends StatelessWidget {
               side: EntrySide.right,
               company: "OrderlyFlow – HR Management",
               dates: "September 2022 – June 2023",
-              role: "UI/UX Lead & Front-End Developer (Senior Project @ BAU)",
+              role: "Senior Project @ BAU",
               customColor: AppTheme.accentOrange,
               body:
-              "Designed and developed a desktop HR platform for task management, internal chat, scheduling, and HR workflows.\n"
-                  "• Led UX research to identify workflow bottlenecks and communication inefficiencies inside HR teams.\n"
-                  "• Designed the full interface in Figma, built a reusable component system, and defined layout & interaction standards.\n"
-                  "• Implemented the UI in Flutter and collaborated through iterative testing with real user feedback.\n"
-                  "Outcome: Reduced manual HR workload and improved internal coordination across teams.",
+              "Desktop HR management app built in Flutter with a local database, targeting small and large companies.\n"
+                  "• Full feature set for HR teams: built-in chat, task assignment, live calendar, real-time collaboration.\n"
+                  "• I led UI/UX design in Figma and implemented the front-end in Flutter.\n"
+                  "Outcome: Reduced manual HR workload by ~10%+ and saved ~30hr/month of repetitive admin work.",
 
               actions: [
                 ProjectActionButtonData(
                   iconAsset: 'assets/images/github.png',
                   label1: 'Checkout',
                   label2: 'Github Repo',
-                  onTap: () {
-                    // launch store link
+                  onTap: () async {
+                    final uri = Uri.parse('https://github.com/Rayane300402/OrderlyFlow'); // your real link
+                    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+                      throw Exception('Could not launch $uri');
+                    }
                   },
                 ),
                 ProjectActionButtonData(
                   iconAsset: 'assets/images/figma.png',
                   label1: 'Checkout',
                   label2: 'Design',
-                  onTap: () {
-                    // launch app store link
+                  onTap: () async {
+                    final uri = Uri.parse('https://www.figma.com/design/pZ4mh1ZR5fayCG0SEFY9S3/OrderlyFlow?node-id=0-1&t=saDMrn1g50ioT4at-1'); // your real link
+                    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+                      throw Exception('Could not launch $uri');
+                    }
                   },
                 ),
               ],
@@ -191,10 +203,10 @@ class FigmaSection extends StatelessWidget {
         ),
 
         Positioned(
-          top: h * 1.2 ,        // <-- tune
-          left: w * 0.4,
+          top: h * 1.22,        // <-- tune
+          left: w * 0.26,
           child:Transform.rotate(
-            angle: 45 * 3.1415926535 / 180, // 45 degrees in radians
+            angle: -45 * 3.1415926535 / 180, // 45 degrees in radians
             child: SvgPicture.asset(
               'assets/images/Excitement.svg',
               width: 80,
