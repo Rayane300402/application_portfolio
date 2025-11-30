@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../components/timelineEntry.dart';
 import '../theme/theme.dart';
-
+//TODO: ANIMATE (APPEAR AS YOU SCROLL style)
 class AcademicsSection extends StatefulWidget {
   const AcademicsSection({super.key});
 

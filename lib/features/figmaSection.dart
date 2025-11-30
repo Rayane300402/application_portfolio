@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:portfolio/components/process_sheet/avooProcessSheet.dart';
+import 'package:portfolio/components/process_sheet/seriesscribeProcessSheet.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../components/projectButton.dart';
 import '../components/timelineEntry.dart';
 import '../theme/theme.dart';
-
+//TODO: ANIMATE (APPEAR AS YOU SCROLL style)
 class FigmaSection extends StatelessWidget {
   const FigmaSection({super.key});
 
@@ -80,9 +82,7 @@ class FigmaSection extends StatelessWidget {
                   iconAsset: 'assets/images/testing.png',
                   label1: 'Checkout',
                   label2: 'Process',
-                  onTap: () {
-
-                  }
+                  onTap: () => showAVOOProcessSheet(context),
                 ),
               ],
             ),
@@ -110,48 +110,15 @@ class FigmaSection extends StatelessWidget {
                     }
                   },
                 ),
-              ],
-            ),
-            const SizedBox(height: 40,),
-            TimelineEntry(
-              side: EntrySide.right,
-              company: "OrderlyFlow – HR Management",
-              dates: "September 2022 – June 2023",
-              role: "Senior Project @ BAU",
-              customColor: AppTheme.accentOrange,
-              body:
-              "Desktop HR management app built in Flutter with a local database, targeting small and large companies.\n"
-                  "• Full feature set for HR teams: built-in chat, task assignment, live calendar, real-time collaboration.\n"
-                  "• I led UI/UX design in Figma and implemented the front-end in Flutter.\n"
-                  "Outcome: Reduced manual HR workload by ~10%+ and saved ~30hr/month of repetitive admin work.",
-
-              actions: [
                 ProjectActionButtonData(
-                  iconAsset: 'assets/images/github.png',
-                  label1: 'Checkout',
-                  label2: 'Github Repo',
-                  onTap: () async {
-                    final uri = Uri.parse('https://github.com/Rayane300402/OrderlyFlow'); // your real link
-                    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
-                      throw Exception('Could not launch $uri');
-                    }
-                  },
-                ),
-                ProjectActionButtonData(
-                  iconAsset: 'assets/images/figma.png',
-                  label1: 'Checkout',
-                  label2: 'Design',
-                  onTap: () async {
-                    final uri = Uri.parse('https://www.figma.com/design/pZ4mh1ZR5fayCG0SEFY9S3/OrderlyFlow?node-id=0-1&t=saDMrn1g50ioT4at-1'); // your real link
-                    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
-                      throw Exception('Could not launch $uri');
-                    }
-                  },
+                    iconAsset: 'assets/images/testing.png',
+                    label1: 'Checkout',
+                    label2: 'Process',
+                    onTap: () => showSeriesScribeProcessSheet(context),
                 ),
               ],
             ),
             const SizedBox(height: 70,),
-
           ],
         ),
 

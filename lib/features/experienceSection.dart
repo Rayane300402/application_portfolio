@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/theme/theme.dart';
 
 import '../components/timelineEntry.dart';
-
+//TODO: ANIMATE (APPEAR AS YOU SCROLL style)
 class ExperienceSection extends StatelessWidget {
   const ExperienceSection({super.key});
 

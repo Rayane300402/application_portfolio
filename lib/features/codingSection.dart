@@ -7,6 +7,7 @@ import '../components/projectButton.dart';
 import '../components/timelineEntry.dart';
 import '../theme/theme.dart';
 
+//TODO: ANIMATE (APPEAR AS YOU SCROLL style)
 class CodingSection extends StatelessWidget {
   const CodingSection({super.key});
 
