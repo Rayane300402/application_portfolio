@@ -118,13 +118,13 @@ class FigmaSection extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 70,),
+            // const SizedBox(height: 40,),
           ],
         ),
 
         // ===== Inter-entry accents =====
         Positioned(
-          top: h * 0.55,
+          top: h * 0.59,
           left: 30,
           child: SvgPicture.asset(
             'assets/images/arrowRight.svg',
@@ -147,17 +147,7 @@ class FigmaSection extends StatelessWidget {
         ),
 
         Positioned(
-          top: h * 1.65,
-          left: 30,
-          child: SvgPicture.asset(
-            'assets/images/arrowRight.svg',
-            width: 100,
-            theme: SvgTheme(currentColor: accent),
-          ),
-        ),
-
-        Positioned(
-          top: h * 0.5,        // <-- tune
+          top: h * 0.6,        // <-- tune
           left: w * 0.5,
           child: Transform(
             transform: Matrix4.identity()..scale(-1.0,1.0,1.0),
@@ -174,32 +164,6 @@ class FigmaSection extends StatelessWidget {
           left: w * 0.26,
           child:Transform.rotate(
             angle: -45 * 3.1415926535 / 180, // 45 degrees in radians
-            child: SvgPicture.asset(
-              'assets/images/Excitement.svg',
-              width: 80,
-              theme: SvgTheme(currentColor: accent),
-            ),
-          ),
-        ),
-
-        Positioned(
-          top: h * 1.7,        // <-- tune
-          left: w * 0.4,
-          child:Transform.rotate(
-            angle: 120 * 3.1415926535 / 180, // 45 degrees in radians
-            child: SvgPicture.asset(
-              'assets/images/Excitement.svg',
-              width: 80,
-              theme: SvgTheme(currentColor: accent),
-            ),
-          ),
-        ),
-
-        Positioned(
-          top: h * 2.35,        // <-- tune
-          right: 0,
-          child:Transform.rotate(
-            angle: 80 * 3.1415926535 / 180, // 45 degrees in radians
             child: SvgPicture.asset(
               'assets/images/Excitement.svg',
               width: 80,

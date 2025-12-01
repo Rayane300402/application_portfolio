@@ -157,7 +157,7 @@ This was my capstone project for the Google UX Design Professional Certificate, 
                                 color: Colors.white12,
                                 height: 160,
                                 alignment: Alignment.center,
-                                child: Image.asset('assets/AVOO/GoogleProblem.png'),
+                                child: Image.asset('assets/images/AVOO/GoogleProblem.png'),
                               ),
                             ),
                             const SizedBox(height: 12),
@@ -194,7 +194,7 @@ AVOO’s goal is to make budgeting feel approachable and guided — small steps,
                                 color: Colors.white12,
                                 height: 180,
                                 alignment: Alignment.center,
-                                child: Image.asset('assets/AVOO/persona.png'),
+                                child: Image.asset('assets/images/AVOO/persona.png'),
                               ),
                             ),
                             const SizedBox(height: 12),
@@ -244,6 +244,31 @@ These insights shaped the onboarding, dashboard structure, and notification stra
                                 color: AppTheme.textWhite,
                               ),
                             ),
+                            const SizedBox(height: 12),
+
+                            // Figma link button
+                            SizedBox(
+                              width: double.infinity,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: AppTheme.textWhite,
+                                  foregroundColor: AppTheme.primaryGreen,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                ),
+                                onPressed: () async{
+                                  final uri = Uri.parse('https://docs.google.com/presentation/d/1I9XTZ_appR-S_DBG9rYSq6EmktB1levFfhPnuSApj94/edit?usp=sharing'); // your real link
+                                  if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+                                    throw Exception('Could not launch $uri');
+                                  }
+                                },
+                                child: const Text(
+                                  'View Google Slide',
+                                  style: TextStyle(fontWeight: FontWeight.w700),
+                                ),
+                              ),
+                            ),
 
                             const SizedBox(height: 24),
 
@@ -259,43 +284,62 @@ These insights shaped the onboarding, dashboard structure, and notification stra
                             ),
                             const SizedBox(height: 12),
 
-                            // TODO: replace with collage of handwritten wireframes
                             ClipRRect(
                               borderRadius: BorderRadius.circular(16),
-                              child: Container(
-                                color: Colors.white12,
-                                height: 160,
-                                alignment: Alignment.center,
-                                child: Image.asset('assets/AVOO/AVOO-3.jpeg'),
+                              child: AspectRatio(
+                                aspectRatio: 16 / 9,
+                                child: Transform.rotate(
+                                  angle: -3.14159 / 2, // 90° clockwise
+                                  child: Image.asset(
+                                    'assets/images/AVOO/AVOO-3.jpeg',
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
                               ),
                             ),
+
                             ClipRRect(
                               borderRadius: BorderRadius.circular(16),
-                              child: Container(
-                                color: Colors.white12,
-                                height: 160,
-                                alignment: Alignment.center,
-                                child: Image.asset('assets/AVOO/AVOO-4.jpeg'),
+                              child: AspectRatio(
+                                aspectRatio: 16 / 9,
+                                child: Transform.rotate(
+                                  angle: -3.14159 / 2,
+                                  child: Image.asset(
+                                    'assets/images/AVOO/AVOO-4.jpeg',
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
                               ),
                             ),
+
                             ClipRRect(
                               borderRadius: BorderRadius.circular(16),
-                              child: Container(
-                                color: Colors.white12,
-                                height: 160,
-                                alignment: Alignment.center,
-                                child: Image.asset('assets/AVOO/AVOO-5.jpeg'),
+                              child: AspectRatio(
+                                aspectRatio: 16 / 9,
+                                child: Transform.rotate(
+                                  angle: -3.14159 / 2,
+                                  child: Image.asset(
+                                    'assets/images/AVOO/AVOO-5.jpeg',
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
                               ),
                             ),
+
                             ClipRRect(
                               borderRadius: BorderRadius.circular(16),
-                              child: Container(
-                                color: Colors.white12,
-                                height: 160,
-                                alignment: Alignment.center,
-                                child: Image.asset('assets/AVOO/AVOO-6.jpeg'),
+                              child: AspectRatio(
+                                aspectRatio: 16 / 9,
+                                child: Transform.rotate(
+                                  angle: -3.14159 / 2,
+                                  child: Image.asset(
+                                    'assets/images/AVOO/AVOO-6.jpeg',
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
                               ),
                             ),
+
                             const SizedBox(height: 8),
                             Text(
                               """Paper sketches let me quickly explore different dashboard layouts, navigation for goals, and how reminders and insights should appear without committing to pixels yet.""",
@@ -328,16 +372,17 @@ These insights shaped the onboarding, dashboard structure, and notification stra
                                 color: Colors.white12,
                                 height: 160,
                                 alignment: Alignment.center,
-                                child: Image.asset('assets/AVOO/lowfiMobile.png'),
+                                child: Image.asset('assets/images/AVOO/lowfiMobile.png'),
                               ),
                             ),
+                            const SizedBox(height: 8),
                             ClipRRect(
                               borderRadius: BorderRadius.circular(16),
                               child: Container(
                                 color: Colors.white12,
                                 height: 160,
                                 alignment: Alignment.center,
-                                child: Image.asset('assets/AVOO/lowfiWeb.png'),
+                                child: Image.asset('assets/images/AVOO/lowfiWeb.png'),
                               ),
                             ),
 
@@ -373,16 +418,17 @@ These insights shaped the onboarding, dashboard structure, and notification stra
                                 color: Colors.white12,
                                 height: 160,
                                 alignment: Alignment.center,
-                                child: Image.asset('assets/AVOO/protoMobile.png'),
+                                child: Image.asset('assets/images/AVOO/protoMobile.png'),
                               ),
                             ),
+                            const SizedBox(height: 8),
                             ClipRRect(
                               borderRadius: BorderRadius.circular(16),
                               child: Container(
                                 color: Colors.white12,
                                 height: 160,
                                 alignment: Alignment.center,
-                                child: Image.asset('assets/AVOO/protoWeb.png'),
+                                child: Image.asset('assets/images/AVOO/protoWeb.png'),
                               ),
                             ),
                             const SizedBox(height: 12),
@@ -442,6 +488,7 @@ These insights shaped the onboarding, dashboard structure, and notification stra
                                 color: AppTheme.textWhite,
                               ),
                             ),
+
                           ],
                         ),
                       ),
