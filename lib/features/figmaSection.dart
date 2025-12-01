@@ -4,6 +4,7 @@ import 'package:portfolio/components/process_sheet/avooProcessSheet.dart';
 import 'package:portfolio/components/process_sheet/seriesscribeProcessSheet.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../components/process_sheet/salemtekProcessSheet.dart';
 import '../components/projectButton.dart';
 import '../components/timelineEntry.dart';
 import '../theme/theme.dart';
@@ -38,17 +39,18 @@ class FigmaSection extends StatelessWidget {
                   iconAsset: 'assets/images/figma.png',
                   label1: 'Checkout',
                   label2: 'Design',
-                  onTap: () {
-                    // launch app store link
+                  onTap: () async {
+                    final uri = Uri.parse('https://www.figma.com/design/PYBCmi2Xfe7iF6kDD2VEDh/Salemtek?node-id=0-1&t=SneOxVBsVHkpy5Tn-1');
+                    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+                      throw Exception('Could not launch $uri');
+                    }
                   },
                 ),
                 ProjectActionButtonData(
                     iconAsset: 'assets/images/testing.png',
                     label1: 'Checkout',
                     label2: 'Process',
-                    onTap: () {
-
-                    }
+                    onTap: () => salemtekProcessSheet(context),
                 ),
               ],
             ),

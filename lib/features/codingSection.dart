@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../components/lacedProcessSheet.dart';
+import '../components/process_sheet/lacedProcessSheet.dart';
 import '../components/projectButton.dart';
 import '../components/timelineEntry.dart';
 import '../theme/theme.dart';

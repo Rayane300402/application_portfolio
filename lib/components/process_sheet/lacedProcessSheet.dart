@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../theme/theme.dart';
+import '../../theme/theme.dart';
 
-Future<void> showTSB2ProcessSheet(BuildContext context) {
+Future<void> showLacedProcessSheet(BuildContext context) {
   return showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -59,7 +59,7 @@ Future<void> showTSB2ProcessSheet(BuildContext context) {
                           const SizedBox(width: 4),
                           Expanded(
                             child: Text(
-                              'TSB2 – Engineering Process',
+                              'Laced – Engineering Process',
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: Theme.of(sheetContext)
@@ -101,10 +101,11 @@ Future<void> showTSB2ProcessSheet(BuildContext context) {
                             ),
                             const SizedBox(height: 8),
                             Text(
-                              'TSB2 was my first real-world software project, the reason I grew from "I know the basic" to'
-                                  '"I can ship a full production app". It was a complete revamp of the original TSB, with a new UI,'
-                                  ' new features, and a full rebuild using Angular, Node.js, Electron, and SQLite.\n'
-                                  'This project taught me how to build software from the inside out.',
+                              'Laced was first a two-person project: I handled the Flutter app and the local data system, '
+                                  'while another coworker handled the backend services and the core.'
+                                  'Flutter was an obvious choice, I already have experience in Flutter as I build a full desktop app '
+                                  'using it during my last year in university, so it gave us the fastest path from idea'
+                                  'to working product.',
                               style: Theme.of(sheetContext)
                                   .textTheme
                                   .bodyMedium!
@@ -117,7 +118,7 @@ Future<void> showTSB2ProcessSheet(BuildContext context) {
 
                             const SizedBox(height: 16),
                             Text(
-                              'Growth',
+                              'Architecture & Stack',
                               style: Theme.of(sheetContext)
                                   .textTheme
                                   .displayMedium!
@@ -128,11 +129,17 @@ Future<void> showTSB2ProcessSheet(BuildContext context) {
                             ),
                             const SizedBox(height: 8),
                             Text(
-                              'I spent my first few weeks training:\n'
-                                  '   • Learning Angular\n'
-                                  '   • Understand how Electron wraps a web application into a desktop environment\n'
-                                  '   • Getting familiar with the existing Node.js utilities used by the company.\n'
-                                  'Once I had the fundamentals, I was handed the Figma file and told to start building.',
+                              '• On the app side, i built a complete SQLite system:\n'
+                              '   • versioned migrations\n'
+                              '   • safe upgrades for future design changes\n'
+                              '   • default data seeding\n'
+                              '   • a clean, predictable structure that wouldn\'t break even as the UI was overhauled\n'
+                              '• Backend reality\n'
+                              '   • a core nodejs service\n'
+                              '   • a separate dashboard\n'
+                              '   • and server processes managed via systemctl.\n'
+                              'They communicated with the app mostly through WebSockets and dedicated API routes.'
+                                  'That splot architecture worked well, but it meant every part require coordination.',
                               style: Theme.of(sheetContext)
                                   .textTheme
                                   .bodyMedium!
@@ -145,7 +152,7 @@ Future<void> showTSB2ProcessSheet(BuildContext context) {
 
                             const SizedBox(height: 16),
                             Text(
-                              'Responsibilities',
+                              'Challenges & Outcomes',
                               style: Theme.of(sheetContext)
                                   .textTheme
                                   .displayMedium!
@@ -156,14 +163,38 @@ Future<void> showTSB2ProcessSheet(BuildContext context) {
                             ),
                             const SizedBox(height: 8),
                             Text(
-                              'The UI was my first responsibility. I wasn\'t just coding it, I had permission '
-                                  'to work on the figma file; change, add, remove.\n'
-                                  'My first code was very messy, too many lines that could be shortened and do many duplicates. '
-                                  'I learned from this mess a bit later how to clean it, turn duplicates into components. understand clean architecture instead of patching things together\n\n'
-                                  'When Ui foundation was in place, I moved to the local db. I had 0 knowledge in SQLite before but I do have knowledge '
-                                  'in queries so I learned it while building it. There was a bit of struggle with relationship building with tables but I got help from my coworkers then and it was super smooth from then on.\n\n'
-                                  'My first 2-3 months were just me building TSB2 semi-completing the front-end and the database, when my manager noticed how far I was in the works, he has 2 coworkers who worked on TSB1 join me '
-                                  'and have them implement the backend service and speed up the work to go Beta before the end of the year and getting published at the beginning of the new year.',
+                              'Halfway through the project, the developer handling the backend left and Laced became solely mine. '
+                                  'I took ownership of the entire pipeline myself. App, server, core logic and pushing update to users\n'
+                                  'I had working knowledge in Node.js as I worked in an Angular-Electron desktop app before Laced,'
+                                  'but I did not have hands-on experience with Laced\'s code. A coworker who helped my old teammate with the backend before he left, helped me fill the gaps, '
+                                  'walking me through some of the architectural choices and patterns. Slowly I got the hang of it and can proudly call Laced mine in evert part.',
+                              style: Theme.of(sheetContext)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .copyWith(
+                                fontSize: 14,
+                                height: 1.5,
+                                color: AppTheme.textWhite,
+                              ),
+                            ),
+
+                            const SizedBox(height: 16),
+                            Text(
+                              'Feature Growth',
+                              style: Theme.of(sheetContext)
+                                  .textTheme
+                                  .displayMedium!
+                                  .copyWith(
+                                fontSize: 16,
+                                color: AppTheme.textWhite,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              'Once stable, I expanded the system. I added, removed, moved, cleaned, automated\n'
+                                  '   • Like new features, 3rd party tools\n'
+                                  '   • Improved task handling\n'
+                                  '   • updated and maintained WebSocket behavior into a faster, smoother way',
                               style: Theme.of(sheetContext)
                                   .textTheme
                                   .bodyMedium!
@@ -187,11 +218,10 @@ Future<void> showTSB2ProcessSheet(BuildContext context) {
                             ),
                             const SizedBox(height: 8),
                             Text(
-                              'TSB2 has been live for over 2 years. By the end of 2024, I stepped away to focus'
-                                  'entirely on Laced, but the skills I learned from this project shaped everything I '
-                                  'built afterward. TSB taught me how to learn fast, debug properly, designer cleaner solutions, '
-                                  'and take ownership of a production codebase. Without that experience, I wouldn\'t have been able to build Laced'
-                                  'as smoothly as I did.',
+                              'Android approved our work quickly, we struggled a bit with iOS but eventually it became live and now we have:\n'
+                                  '   • ~300+ iOS users &\n'
+                                  '   • ~1.4k+ Android users\n'
+                              'And the full stack is something I can maintain confidently end-to-end.',
                               style: Theme.of(sheetContext)
                                   .textTheme
                                   .bodyMedium!
