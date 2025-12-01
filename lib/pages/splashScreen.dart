@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen>     with TickerProviderStat
 
     Future.delayed(const Duration(seconds: 5), () {
       if (mounted) {
-        Navigator.of(context).pushReplacement(
+        Navigator.of(context, rootNavigator: false).pushReplacement(
           MaterialPageRoute(builder: (_) => const IntroductionPage()),
         );
       }

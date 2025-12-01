@@ -6,7 +6,13 @@ class AppRoot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // The FIRST page of the app (your splash)
-    return const SplashScreen();
+    return Navigator(
+      onGenerateRoute: (settings) {
+        return MaterialPageRoute(
+          builder: (_) => const SplashScreen(),
+        );
+      },
+    );
   }
 }
+

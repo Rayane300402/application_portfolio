@@ -194,7 +194,7 @@ Goal: design a reminder app that feels supportive, light, and reliable — not j
 
                             // Persona: Layla (rotated page)
                             Text(
-                              'Persona – Sarah',
+                              'Persona – Layla',
                               style: Theme.of(sheetContext)
                                   .textTheme
                                   .bodyMedium!
@@ -207,12 +207,9 @@ Goal: design a reminder app that feels supportive, light, and reliable — not j
                             const SizedBox(height: 8),
                             ClipRRect(
                               borderRadius: BorderRadius.circular(16),
-                              child: Transform.rotate(
-                                angle: 90 * math.pi / 180,
-                                child: Image.asset(
-                                  'assets/images/Salemtek/salemtek-4.jpeg',
-                                  fit: BoxFit.contain,
-                                ),
+                              child: Image.asset(
+                                'assets/images/Salemtek/salemtek-4.jpeg',
+                                fit: BoxFit.contain,
                               ),
                             ),
                             const SizedBox(height: 6),
@@ -243,12 +240,9 @@ Goal: design a reminder app that feels supportive, light, and reliable — not j
                             const SizedBox(height: 8),
                             ClipRRect(
                               borderRadius: BorderRadius.circular(16),
-                              child: Transform.rotate(
-                                angle: 90 * math.pi / 180,
-                                child: Image.asset(
-                                  'assets/images/Salemtek/salemtek-3.jpeg',
-                                  fit: BoxFit.contain,
-                                ),
+                              child: Image.asset(
+                                'assets/images/Salemtek/salemtek-3.jpeg',
+                                fit: BoxFit.contain,
                               ),
                             ),
                             const SizedBox(height: 6),
@@ -279,12 +273,9 @@ Goal: design a reminder app that feels supportive, light, and reliable — not j
                             const SizedBox(height: 12),
                             ClipRRect(
                               borderRadius: BorderRadius.circular(16),
-                              child: Transform.rotate(
-                                angle: 90 * math.pi / 180,
-                                child: Image.asset(
-                                  'assets/images/Salemtek/salemtek-2.jpg',
-                                  fit: BoxFit.contain,
-                                ),
+                              child: Image.asset(
+                                'assets/images/Salemtek/salemtek-2.jpeg',
+                                fit: BoxFit.contain,
                               ),
                             ),
                             const SizedBox(height: 8),
@@ -321,12 +312,9 @@ Across them, the recurring needs were:
                             const SizedBox(height: 12),
                             ClipRRect(
                               borderRadius: BorderRadius.circular(16),
-                              child: Transform.rotate(
-                                angle: 90 * math.pi / 180,
-                                child: Image.asset(
-                                  'assets/images/Salemtek/salemtek-5.jpeg',
-                                  fit: BoxFit.contain,
-                                ),
+                              child: Image.asset(
+                                'assets/images/Salemtek/salemtek-5.jpeg',
+                                fit: BoxFit.contain,
                               ),
                             ),
                             const SizedBox(height: 8),
@@ -361,23 +349,17 @@ This directly informed where reminders appear, how often, and how confirmation a
                             // a tall collage of sketches – multiple images if you want
                             ClipRRect(
                               borderRadius: BorderRadius.circular(16),
-                              child: Transform.rotate(
-                                angle: 90 * math.pi / 180,
-                                child: Image.asset(
-                                  'assets/images/Salemtek/salemtek-7.jpeg',
-                                  fit: BoxFit.contain,
-                                ),
+                              child: Image.asset(
+                                'assets/images/Salemtek/salemtek-7.jpeg',
+                                fit: BoxFit.contain,
                               ),
                             ),
                             const SizedBox(height: 8),
                             ClipRRect(
                               borderRadius: BorderRadius.circular(16),
-                              child: Transform.rotate(
-                                angle: 90 * math.pi / 180,
-                                child: Image.asset(
-                                  'assets/images/Salemtek/salemtek-8.jpeg',
-                                  fit: BoxFit.contain,
-                                ),
+                              child: Image.asset(
+                                'assets/images/Salemtek/salemtek-8.jpeg',
+                                fit: BoxFit.contain,
                               ),
                             ),
                             const SizedBox(height: 8),
@@ -409,7 +391,7 @@ This directly informed where reminders appear, how often, and how confirmation a
                             ClipRRect(
                               borderRadius: BorderRadius.circular(16),
                               child: Image.asset(
-                                'assets/images/Salemtek/salemtek-9.jpeg',
+                                'assets/images/Salemtek/salemtek-9.png',
                                 fit: BoxFit.contain,
                               ),
                             ),
@@ -442,7 +424,7 @@ This directly informed where reminders appear, how often, and how confirmation a
                             ClipRRect(
                               borderRadius: BorderRadius.circular(16),
                               child: Image.asset(
-                                'assets/images/Salemtek/salemtek-10.jpeg',
+                                'assets/images/Salemtek/salemtek-10.png',
                                 fit: BoxFit.contain,
                               ),
                             ),

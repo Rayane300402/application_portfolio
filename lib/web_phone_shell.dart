@@ -7,54 +7,49 @@ class WebPhoneShell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double phoneWidth = 430;       // Same width as your mobile design
-    const double phoneAspect = 19.5 / 9; // Slightly tall phone
+    const double phoneWidth  = 430;  // iPhone 14 Pro Max-ish
+    const double phoneHeight = 932;  // iPhone height – pick your target
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       home: Scaffold(
         backgroundColor: const Color(0xFF111111),
-        body: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                "Rayane Al-Naboulsi — Mobile Portfolio",
-                style: const TextStyle(
-                  fontSize: 34,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-
-              const SizedBox(height: 32),
-
-              // PHONE FRAME
-              Container(
-                width: phoneWidth,
-                padding: const EdgeInsets.all(14),
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(42),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.black54,
-                      blurRadius: 40,
-                      spreadRadius: 8,
-                      offset: Offset(0, 16),
-                    )
-                  ],
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(32),
-                  child: AspectRatio(
-                    aspectRatio: phoneAspect,
-                    child: const AppRoot(),
+        body: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  "Rayane Al-Naboulsi — Mobile Portfolio",
+                  style: TextStyle(
+                    fontSize: 34,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
-              ),
-            ],
+          
+                const SizedBox(height: 32),
+          
+                // ==== PHONE FRAME =====
+                Container(
+                  width: phoneWidth,
+                  height: phoneHeight,
+                  padding: const EdgeInsets.all(14),
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      return MediaQuery(
+                        data: MediaQuery.of(context).copyWith(
+                          size: Size(constraints.maxWidth, constraints.maxHeight),
+                        ),
+                        child: const AppRoot(),
+                      );
+                    },
+                  ),
+          
+                ),
+              ],
+            ),
           ),
         ),
       ),
